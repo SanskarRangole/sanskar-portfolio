@@ -198,16 +198,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Global responsive helpers */
-        img, picture, svg, video { max-width: 100%; height: auto; display: block; }
-        a:focus, button:focus, .btn:focus { outline: 3px solid rgba(37,99,235,0.18); outline-offset: 2px; }
-        .btn { min-height: 44px; }
-
-        /* Hide hero social icons on smaller viewports to avoid overlap */
-        @media (max-width: 720px){
-            .hero-social { display: none; }
-        }
-
         /* Enhanced Animated Background */
         .bg-animation {
             position: fixed;
@@ -721,8 +711,6 @@
             flex-direction: column;
             gap: 20px;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain;
         }
 
         .mobile-menu.open { left: 0; }
@@ -1256,12 +1244,6 @@
             z-index: 0;
             font-weight: 800;
             box-shadow: 0 10px 30px rgba(255, 59, 134, 0.4);
-        }
-
-        /* Responsive button sizes for smaller screens to avoid overflow */
-        @media (max-width: 520px){
-            .btn { padding: 12px 22px; font-size: 15px; border-radius: 10px; }
-            .cta-buttons { gap: 12px; }
         }
 
         .btn-primary::after {
@@ -2315,10 +2297,6 @@
         .cert-modal .modal-header{ display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-bottom:1px solid #eef2ff }
         .cert-modal .modal-body{ padding:14px; display:flex; gap:14px; align-items:flex-start }
         .cert-modal .modal-body img{ width:46%; height:auto; max-height:70vh; object-fit:contain; border-radius:8px }
-
-        @media (max-width:720px){
-            .cert-modal .modal-body img{ width:100%; max-height:60vh; }
-        }
         .cert-modal .modal-meta{ flex:1 }
         .cert-modal .close-btn{ background:transparent; border:0; font-size:18px; cursor:pointer; color:#0f172a }
 
@@ -2610,6 +2588,17 @@
 
             .hero h1 {
                 font-size: 42px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .hero p, .typing-container, .about-text p, .highlight-item p, .project-body p, .achievement-content p, .cert-cta-description, .contact-intro {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .contact-value {
+                word-break: break-all;
             }
 
             .typing-container {
@@ -2622,6 +2611,8 @@
 
             .section-title {
                 font-size: 36px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
 
             .cta-buttons {
@@ -2664,53 +2655,6 @@
             .cert-cta-action {
                 padding: 22px;
             }
-        }
-
-
-
-        /* Hero LinkedIn card (compact) */
-        .hero-li-card {
-            display:flex;
-            align-items:center;
-            gap:10px;
-            background: linear-gradient(180deg, rgba(10,102,194,0.06), rgba(10,102,194,0.03));
-            border: 1px solid rgba(10,102,194,0.10);
-            padding:8px 10px;
-            border-radius:10px;
-            color:#0A66C2;
-            margin:14px auto 26px; /* center horizontally and add space below */
-            width:100%;
-            max-width:300px; /* smaller */
-            justify-content:space-between;
-            text-align:left;
-            box-shadow: 0 8px 20px rgba(10,102,194,0.06);
-        }
-        .hero-li-left { display:flex; gap:10px; align-items:center; }
-        .hero-li-avatar { background:#0A66C2; color:#fff; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:8px; font-weight:700; font-size:14px; }
-        .hero-li-info { line-height:1; }
-        .hero-li-name { font-weight:700; font-size:13px; }
-        .hero-li-stats { font-size:12px; color: #064A86; display:flex; gap:10px; margin-top:4px; justify-content:center; }
-        .hero-li-stat { display:flex; gap:6px; align-items:center; flex-direction:column; min-width:62px; }
-        .hero-li-stat .count { font-weight:700; font-size:14px; }
-        .hero-li-stat .label { font-size:11px; opacity:0.8; }
-        .hero-li-follow-btn { background:#0A66C2; color:#fff; padding:7px 10px; border-radius:8px; text-decoration:none; font-weight:700; display:inline-flex; gap:8px; align-items:center; font-size:13px }
-
-        /* initial hidden/compact animation */
-        .hero-li-card.li-animate { opacity:0; transform:translateY(8px); transition:opacity .45s ease, transform .45s ease; }
-        .hero-li-card.li-animate.in-view { opacity:1; transform:none; }
-
-        /* extra spacing for scroll indicator below hero */
-        .scroll-indicator { margin-top: 22px; }
-
-        @media (min-width:721px){
-            .hero-li-left{align-items:center; flex-direction:row;}
-            .hero-li-info{ text-align:left; }
-        }
-        @media (max-width:720px){
-            .hero-li-card{max-width:100%; flex-direction:column; align-items:flex-start;}
-            .hero-li-stats{justify-content:flex-start; flex-wrap:wrap; gap:8px;}
-            .hero-li-stat{flex-direction:row; align-items:center;}
-            .hero-li-follow-btn{align-self:stretch; justify-content:center;}
         }
     </style>
   <style>@view-transition { navigation: auto; }</style>
@@ -2798,18 +2742,6 @@
 
     <div class="cta-buttons"><a href="#projects" class="btn btn-primary"><i class="fas fa-briefcase"></i> View My Work</a> <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Let's Connect</a>
     </div>
-
-    <!-- Simple LinkedIn card in hero (follows to your profile) -->
-    <div class="hero-li-card li-animate" aria-label="LinkedIn profile">
-      <div class="hero-li-left">
-        <div class="hero-li-avatar"><i class="fab fa-linkedin-in"></i></div>
-        <div class="hero-li-info">
-          <div class="hero-li-name">Follow me on LinkedIn</div>
-          <div class="hero-li-stats"><div class="hero-li-stat"><span class="count" id="hero-li-connections">--</span><span class="label">Connections</span></div><div class="hero-li-stat"><span class="count" id="hero-li-followers">--</span><span class="label">Followers</span></div></div>
-        </div>
-      </div>
-      <a id="hero-li-follow-btn" class="hero-li-follow-btn" href="https://www.linkedin.com/in/sanskar-rangole/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> Follow</a>
-    </div> 
    </div>
 
    <!-- Scroll Down Indicator -->
@@ -3100,7 +3032,7 @@
             <div class="project-tags"><span class="tag">Web</span> <span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">JavaScript</span> <span class="tag">Live</span>
       </div>
         <div class="project-actions">
-        <a class="btn btn-primary" href="https://maheshkoliphotography.gt.tc" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye"></i> View Project</a>
+        <a class="btn btn-primary" href="https://maheshkoliphotography.gt.tc/" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye"></i> View Project</a>
         </div>
      </div>
     </div>
@@ -3329,63 +3261,8 @@
   
     
     <footer>
-      <div class="footer-inner" style="position:relative;">
-        <p id="footer-text">© 2025 Sanskar Rangole | Designed with <i class="fas fa-heart"></i> Passion &amp; Code</p>
-      </div>
-    </footer> 
-
-    <script>
-    (function(){
-      // Fixed to your profile and works even if footer widget is removed
-      const profile = 'https://www.linkedin.com/in/sanskar-rangole/';
-      const connectionsEl = document.getElementById('li-connections');
-      const followersEl = document.getElementById('li-followers');
-      const followBtn = document.getElementById('li-follow-btn');
-
-      // Hero elements (may not exist on all pages)
-      const heroConnectionsEl = document.getElementById('hero-li-connections');
-      const heroFollowersEl = document.getElementById('hero-li-followers');
-      const heroFollowBtn = document.getElementById('hero-li-follow-btn');
-
-      [followBtn, heroFollowBtn].forEach(btn => { if(btn) btn.href = profile; });
-
-      // Static defaults - edit these values or set STATS_ENDPOINT to fetch dynamically from your server
-      const FALLBACK = { connections: '500+', followers: '826' };
-      const STATS_ENDPOINT = ''; // e.g. '/api/linkedin-stats'
-
-      function setStats(c,f){
-        if(connectionsEl) connectionsEl.textContent = c;
-        if(followersEl) followersEl.textContent = f;
-        if(heroConnectionsEl) heroConnectionsEl.textContent = c;
-        if(heroFollowersEl) heroFollowersEl.textContent = f;
-      }
-
-      if(STATS_ENDPOINT){
-        fetch(STATS_ENDPOINT).then(r=>r.json()).then(data=>{
-          setStats(data.connections || FALLBACK.connections, data.followers || FALLBACK.followers);
-        }).catch(()=> setStats(FALLBACK.connections, FALLBACK.followers));
-      } else {
-        setStats(FALLBACK.connections, FALLBACK.followers);
-      }
-
-      // Animate hero LinkedIn card when it scrolls into view
-      (function(){
-        try{
-          const el = document.querySelector('.hero-li-card.li-animate');
-          if(!el) return;
-          const io = new IntersectionObserver((entries, obs)=>{
-            entries.forEach(entry=>{
-              if(entry.isIntersecting){
-                el.classList.add('in-view');
-                obs.unobserve(entry.target);
-              }
-            });
-          }, { threshold: 0.35 });
-          io.observe(el);
-        }catch(e){/* ignore */}
-      })();
-    })();
-    </script>
+   <p id="footer-text">© 2025 Sanskar Rangole | Designed with <i class="fas fa-heart"></i> Passion &amp; Code</p>
+  </footer>
                 <script>
                 // Mobile navigation toggle
                 (function(){
@@ -3397,18 +3274,13 @@
 
                     if(!navToggle || !mobileMenu || !mobileBackdrop) return;
 
-                    let _lastFocus = null;
                     function openMenu(){
-                        _lastFocus = document.activeElement;
                         navToggle.classList.add('open');
                         mobileMenu.classList.add('open');
                         mobileBackdrop.classList.add('open');
                         mobileMenu.setAttribute('aria-hidden','false');
                         mobileBackdrop.setAttribute('aria-hidden','false');
                         document.body.style.overflow = 'hidden';
-                        // focus first link for accessibility
-                        const first = mobileMenu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-                        if(first) first.focus();
                     }
 
                     function closeMenu(){
@@ -3418,7 +3290,6 @@
                         mobileMenu.setAttribute('aria-hidden','true');
                         mobileBackdrop.setAttribute('aria-hidden','true');
                         document.body.style.overflow = '';
-                        try{ if(_lastFocus && typeof _lastFocus.focus === 'function') _lastFocus.focus(); }catch(e){}
                     }
 
                     navToggle.addEventListener('click', function(){
