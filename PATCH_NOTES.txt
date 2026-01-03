@@ -1,0 +1,6 @@
+Patch: Improve certificate cards visuals
+
+- Added CSS animations: entrance (cardEnter), sheen overlay, thumbnail zoom on hover.
+- Added staggered animation delays for first 3 cards using :nth-child selectors.
+- Added .featured-badge styling; applied a badge to the first certificate card.
+- Ensured hover interactions remain smooth on mobile (only small transforms).

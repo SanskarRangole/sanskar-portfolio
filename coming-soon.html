@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Coming Soon • Sanskar Rangole</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: linear-gradient(135deg, #0f172a, #1e1b4b, #111827);
+      --card-bg: rgba(255,255,255,0.09);
+      --text: #f8fafc;
+      --muted: rgba(248,250,252,0.75);
+      --accent: #ff3b86;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    .card {
+      width: min(520px, 100%);
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 40px;
+      text-align: center;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 20% 20%, rgba(255,59,134,0.35), transparent 60%);
+      pointer-events:none;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+    }
+    p {
+      margin: 0 0 28px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,59,134,0.15);
+      color: #ffe4f1;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ff3b86, #ff6b9d);
+      color: #fff;
+      box-shadow: 0 15px 35px rgba(255,59,134,0.35);
+    }
+    .btn-secondary {
+      background: rgba(248,250,252,0.12);
+      color: #f8fafc;
+      border: 1px solid rgba(248,250,252,0.2);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .coming-soon-emoji {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+    @media (max-width:480px){
+      body{ padding:20px; }
+      .card{ padding:30px 24px; border-radius:22px; }
+      .actions{ flex-direction:column; }
+      .btn{ width:100%; justify-content:center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="coming-soon-emoji">🚧</div>
+    <div class="badge"><i class="fas fa-tools"></i> Under construction</div>
+    <h1>Content coming soon</h1>
+    <p>The detailed documentation, assets, or live preview for this project is being finalized. Thanks for your patience while I polish things up.</p>
+    <div class="actions">
+      <a class="btn btn-primary back-portfolio" href="index.html"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+      <a class="btn btn-secondary" href="mailto:rangole591@gmail.com"><i class="fas fa-envelope"></i> Contact me</a>
+    </div>
+
+    <script>
+      // Robust Back to portfolio behavior: construct same-directory d.html path
+      (function(){
+        document.querySelectorAll('a.back-portfolio').forEach(a=>{
+          a.addEventListener('click', function(e){
+            // keep default on ctrl/cmd click
+            if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+            e.preventDefault();
+            const base = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/');
+            window.location.href = base + 'd.html';
+          });
+        });
+      })();
+    </script>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+</body>
+</html>
+
